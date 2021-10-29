@@ -3,32 +3,28 @@ package com.company;
 public class Main {
 
     public static void main(String[] args) {
-        Car audi = new Car("A6", "Audi", "Granatowy", 2.4, "Wuuuuuuu", 10000.0);
-        Human person = new Human("Dawid", "Reclaf");
+        Animal cat = new Animal("kot");
+        cat.name = "Puszek";
+        cat.age = 5;
 
-        person.getSalary();
-        System.out.println("\n");
-        person.buyCar(audi);
+        System.out.println(cat.getWeight());
+        cat.takeForAWalk();
+        cat.takeForAWalk();
+        cat.takeForAWalk();
+        cat.feed();
 
-        System.out.println("\n");
+        Animal cat2 = new Animal("kot");
+        cat2.name = "Ptysia";
+        cat2.age = 5;
 
-        person.setSalary(1000.0);
-        System.out.println("\n");
-        person.buyCar(audi);
-
-        System.out.println("\n");
-
-        person.setSalary(11000.0);
-        System.out.println("\n");
-        person.buyCar(audi);
-
-        System.out.println("\n");
-
-
-
-//        person.setSalary(1800.0);
-//        System.out.println("\n");
-//        person.getSalary();
+        System.out.println(cat2.getWeight());
+        cat2.feed();
+        cat2.feed();
+        cat2.takeForAWalk();
+        cat2.takeForAWalk();
+        cat2.takeForAWalk();
+        cat2.takeForAWalk();
+        cat2.takeForAWalk();
 
     }
 }
