@@ -3,7 +3,7 @@ package com.company;
 public class Animal {
     final String species; // Jak raz ustawimy to nigdy nie przestawimy
     String name;
-    Double weight;
+    private Double weight;
     Integer age;
     Boolean alive;
 
@@ -22,16 +22,31 @@ public class Animal {
     }
 
     void feed() {
-        weight++;
-        System.out.println("moja waga to: " + weight);
+        if (this.alive){
+            weight++;
+            System.out.println("Nakarmiles mnie, moja waga to: " + weight);
+        }else{
+            System.out.println("Zwierz nie zyje..");
+        }
+
+    }
+    void takeForAWalk() {
+        if (this.alive) {
+            weight--;
+            if (weight == 0) {
+                this.alive = false;
+                System.out.println("Zwierz nie zyje..");
+                return;
+            }
+            System.out.println("Wyprowadziles mnie na spacer, moja waga to: " + weight);
+        }else{
+            System.out.println("Zwierz nie zyje..");
+        }
     }
 
-    void feed(Double foodWeight) {
-        weight += foodWeight;
-        System.out.println("moja waga to: " + weight);
-    }
 
     Double getWeight() {
         return weight;
     }
+
 }
