@@ -4,13 +4,31 @@ public class Main {
 
     public static void main(String[] args) {
         Human person = new Human("Dawid", "Reclaf");
-        person.getName();
 
-        Car audi = new Car("A6", "Audi", "Granatowy", 2.4, "Wuuuuuuu");
+        person.setSalary(1800.0);
+        System.out.println("\n");
+        person.getSalary();
+        System.out.println("\n");
 
-        person.car = audi;
+        System.out.println("\n");
 
-        person.getCar();
+        person.setSalary(3200.0);
+        System.out.println("\n");
+        person.getSalary();
+        System.out.println("\n");
 
+        System.out.println("\n");
+
+        person.setSalary(5200.0);
+        System.out.println("\n");
+        person.getSalary();
+        System.out.println("\n");
+
+        System.out.println("\n");
+
+        person.setSalary(10000.0);
+        System.out.println("\n");
+        person.getSalary();
+        System.out.println("\n");
     }
 }
