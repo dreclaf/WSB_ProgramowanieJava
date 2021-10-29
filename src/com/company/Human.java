@@ -7,15 +7,21 @@ import java.util.List;
 public class Human {
     public String firstName;
     public String lastName;
-    public Animal pet;
-    private Car car;
+    public Animal pet = null;
+    private Car car = null;
     private Double salary = 0.0;
     protected String phone;
     List<Object> salaryList = new ArrayList<Object>();
 
-    Human(String firstName, String lastName) {
+
+    public String toString(){//overriding the toString() method
+        return "imie: "+firstName+" "+", nazwisko: "+lastName+" "+ ", wyplata: " + salary + ", nr. telefonu: "+phone;
+    }
+
+    public Human(String firstName, String lastName, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.phone = phone;
     }
 
     public void getSalary(){

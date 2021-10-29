@@ -7,8 +7,13 @@ public class Animal {
     Integer age;
     Boolean alive;
 
-    Animal(String species) { // konstruktor
+    public String toString(){//overriding the toString() method
+        return "species: "+species+" "+", name: "+name+" "+", weight: "+weight+", age: "+age + ", alive: " + alive;
+    }
+
+    Animal(String species, Integer age) { // konstruktor
         this.species = species;
+        this.age = age;
         this.alive = true;
 
         if (this.species.equals("pies")) {
