@@ -8,8 +8,8 @@ public class Human {
     public String firstName;
     public String lastName;
     public Animal pet;
-    public Car car;
-    private Double salary = 2300.0;
+    private Car car;
+    private Double salary = 0.0;
     protected String phone;
     List<Object> salaryList = new ArrayList<Object>();
 
@@ -40,6 +40,21 @@ public class Human {
             System.out.println("Zmieniam wartosc wyplaty..");
 
             this.salary = salary;
+        }
+    }
+
+    public void buyCar(Car car){
+        if(this.salary > car.value){
+            System.out.println("Udalo sie kupic auto za gotowke.");
+            this.car = car;
+            return;
+        }else if (this.salary > car.value*0.08){
+            System.out.println("Udalo sie kupic samochod na kredyt.");
+            this.car = car;
+            return;
+        }else{
+            System.out.println("zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+            return;
         }
     }
 
