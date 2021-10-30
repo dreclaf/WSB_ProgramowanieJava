@@ -32,6 +32,6 @@ public class Phone extends Device implements Saleable {
 
     @Override
     public Double getPrice() {
-        return;
+        return null;
     }
 }
