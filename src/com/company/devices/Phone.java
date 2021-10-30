@@ -1,6 +1,8 @@
 package com.company.devices;
 
-public class Phone extends Device{
+import com.company.Saleable;
+
+public class Phone extends Device implements Saleable {
     final Double screenSize;
     String os;
 
@@ -20,5 +22,16 @@ public class Phone extends Device{
 
     public void turnOn() {
         System.out.println("Nacisnieto przycisk, telefon wlaczony.");
+    }
+
+    @Override
+    public void sale() {
+        System.out.println("Sprzedano!");
+        return;
+    }
+
+    @Override
+    public Double getPrice() {
+        return;
     }
 }
