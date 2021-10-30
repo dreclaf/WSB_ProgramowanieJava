@@ -1,10 +1,14 @@
 package com.company;
 
+import com.company.devices.Car;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Human {
+public class Human extends Animal{ // każdy człowiek jest zwierzęciem
+    public final static String HUMAN_SPECIES = "homo sapiens";
+
     public String firstName;
     public String lastName;
     public Animal pet = null;
@@ -19,6 +23,7 @@ public class Human {
     }
 
     public Human(String firstName, String lastName, String phone) {
+        super(HUMAN_SPECIES); // odwołuje się do klasy wyżej
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
@@ -50,11 +55,11 @@ public class Human {
     }
 
     public void buyCar(Car car){
-        if(this.salary > car.value){
+        if(this.salary > car.getValue()){
             System.out.println("Udalo sie kupic auto za gotowke.");
             this.car = car;
             return;
-        }else if (this.salary > car.value*0.08){
+        }else if (this.salary > car.getValue()*0.08){
             System.out.println("Udalo sie kupic samochod na kredyt.");
             this.car = car;
             return;

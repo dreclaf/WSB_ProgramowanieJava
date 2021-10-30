@@ -11,9 +11,8 @@ public class Animal {
         return "species: "+species+" "+", name: "+name+" "+", weight: "+weight+", age: "+age + ", alive: " + alive;
     }
 
-    Animal(String species, Integer age) { // konstruktor
+    Animal(String species) { // konstruktor
         this.species = species;
-        this.age = age;
         this.alive = true;
 
         if (this.species.equals("pies")) {
