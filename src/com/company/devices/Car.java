@@ -17,8 +17,8 @@ public class Car extends Device {
                 '}';
     }
 
-    public Car(String yearOfPRoduction, String color, Double engineCapacity, String engineSound, Double value) {
-        super(yearOfPRoduction);
+    public Car(String model, String producer, String yearOfProduction, String color, Double engineCapacity, String engineSound, Double value) {
+        super(model, producer, yearOfProduction);
         this.color = color;
         this.engineCapacity = engineCapacity;
         this.engineSound = engineSound;

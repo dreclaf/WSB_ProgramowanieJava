@@ -13,8 +13,8 @@ public class Phone extends Device{
                 '}';
     }
 
-    public Phone(String yearOfPRoduction, Double screenSize, String os) {
-        super(yearOfPRoduction);
+    public Phone(String yearOfProduction, String model, String producer, Double screenSize, String os) {
+        super(model, producer, yearOfProduction);
         this.screenSize = screenSize;
         this.os = os;
     }
