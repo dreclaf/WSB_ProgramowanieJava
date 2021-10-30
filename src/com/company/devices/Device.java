@@ -9,5 +9,5 @@ public abstract class Device { // klasa abstrakcyjna, nie wolno tworzyćjej obie
         this.yearOfProduction = yearOfProduction;
     }
 
-    abstract public void turnOn();
+    abstract public void turnOn(); // ta metoda przeniesie sie do wszystkich dziedziczonych obiektow, gdzie bedzie musiala byc okreslona.
 }
