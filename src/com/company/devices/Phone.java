@@ -4,7 +4,6 @@ public class Phone extends Device{
     final Double screenSize;
     String os;
 
-    @Override
     public String toString() {
         return "Phone{" +
                 "yearOfProduction='" + yearOfProduction + '\'' +
@@ -17,5 +16,9 @@ public class Phone extends Device{
         super(model, producer, yearOfProduction);
         this.screenSize = screenSize;
         this.os = os;
+    }
+
+    public void turnOn() {
+        System.out.println("Nacisnieto przycisk, telefon wlaczony.");
     }
 }

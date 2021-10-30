@@ -6,7 +6,6 @@ public class Car extends Device {
     Double engineCapacity;
     String engineSound;
 
-    @Override
     public String toString() {
         return "Car{" +
                 "value=" + value +
@@ -39,5 +38,9 @@ public class Car extends Device {
 
     public void getInfo(){
         System.out.println("Model: "+model+", producent: "+ producer+", kolor: "+color+", pojemnosc silnika: "+engineCapacity+", odglos silnika "+engineSound);
+    }
+
+    public void turnOn() {
+        System.out.println("Przekrecono kluczyk, odpalono samochod");
     }
 }

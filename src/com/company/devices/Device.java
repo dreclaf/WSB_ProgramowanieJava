@@ -8,4 +8,6 @@ public abstract class Device { // klasa abstrakcyjna, nie wolno tworzyćjej obie
     public Device(String model, String producer, String yearOfProduction){
         this.yearOfProduction = yearOfProduction;
     }
+
+    abstract public void turnOn();
 }
