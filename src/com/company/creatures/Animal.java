@@ -1,6 +1,9 @@
-package com.company;
+package com.company.creatures;
 
-public class Animal {
+import com.company.Feedable;
+import com.company.Human;
+
+public abstract class Animal implements Feedable {
     final String species; // Jak raz ustawimy to nigdy nie przestawimy
     String name;
     private Double weight;
@@ -11,11 +14,15 @@ public class Animal {
         return "species: "+species+" "+", name: "+name+" "+", weight: "+weight+", age: "+age + ", alive: " + alive;
     }
 
-    Animal(String species) { // konstruktor
+    public Animal(String species) { // konstruktor
         this.species = species;
         this.alive = true;
 
-        if (this.species.equals("pies")) {
+        if (this.species.equals("swinia")) {
+            this.weight = 120.0;
+        } else if (this.species.equals("krowa")) {
+            this.weight = 300.0;
+        } else if (this.species.equals("pies")) {
             this.weight = 12.0;
         } else if (this.species.equals("kot")) {
             this.weight = 3.0;
@@ -25,28 +32,23 @@ public class Animal {
         // This odwołuje się do klasy
     }
 
-    void feed() {
+    public void feed() {
         if (this.alive){
             weight++;
             System.out.println("Nakarmiles mnie, moja waga to: " + weight);
         }else{
             System.out.println("Zwierz nie zyje..");
         }
-
     }
-    void takeForAWalk() {
-        if (this.alive) {
-            weight--;
-            if (weight == 0) {
-                this.alive = false;
-                System.out.println("Zwierz nie zyje..");
-                return;
-            }
-            System.out.println("Wyprowadziles mnie na spacer, moja waga to: " + weight);
+    public void feed(int foodWeight) {
+        if (this.alive){
+            weight += foodWeight;
+            System.out.println("Nakarmiles mnie, moja waga to: " + weight);
         }else{
             System.out.println("Zwierz nie zyje..");
         }
     }
+
 
     public void sale(Human seller, Human buyer, Double price) throws Exception {
         if(seller.pet != this){
@@ -66,11 +68,6 @@ public class Animal {
 
             System.out.println("Transakcja przebiegla pomyslnie");
         }
-    }
-
-
-    Double getWeight() {
-        return weight;
     }
 
 }
