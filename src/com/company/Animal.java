@@ -48,6 +48,22 @@ public class Animal {
         }
     }
 
+    public void sale(Human seller, Human buyer, Double price) {
+        if(seller.pet != this){
+            System.out.println("Sprzedawca nie ma tego zwierzecia");
+        }else if (buyer.cash < price){
+            System.out.println("Kupujacy nie ma wystarczajaco duzo hajsu");
+        }else{
+            buyer.cash -= price;
+            buyer.pet = this;
+
+            seller.cash += price;
+            seller.pet = null;
+
+            System.out.println("Transakcja przebiegla pomyslnie");
+        }
+    }
+
 
     Double getWeight() {
         return weight;

@@ -6,10 +6,27 @@ public class Main {
 
     public static void main(String[] args) {
         Phone telefon = new Phone("2021", "mi10", "xiaomi", 6.4, "Android");
-        Car audi = new Car("A6", "Audi", "2021", "granatowy", 2.4, "Wuuuu", 100000.0);
+        Human me = new Human("Dawid", "Reclaf", "123 12 123");
+        Human he = new Human("Jan", "Kowalski", "543 321 234");
+        Human slave = new Human("Slave", "Slavery", "no phone.");
+//
+//        me.phone = telefon;
+//
+//        he.cash = 1500.0;
+//
+//        System.out.println(me);
+//        System.out.println(he);
+//
+//        me.phone.sale(me, he, 1000.);
 
-        System.out.println(telefon);
-        System.out.println(audi);
+        me.slave = slave;
+
+        System.out.println(me);
+        System.out.println(he);
+
+        me.slave.sale(me, he, 10000.0);
+
+
 
 //        Device wahsingmachine = new Device("S3213", "Samsung", "2020");
 

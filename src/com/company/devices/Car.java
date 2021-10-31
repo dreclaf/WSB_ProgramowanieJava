@@ -1,5 +1,7 @@
 package com.company.devices;
 
+import com.company.Human;
+
 public class Car extends Device {
     private Double value;
     String color;
@@ -14,6 +16,25 @@ public class Car extends Device {
                 ", engineSound='" + engineSound + '\'' +
                 ", yearOfProduction='" + yearOfProduction + '\'' +
                 '}';
+    }
+
+    @Override
+    public void sale(Human seller, Human buyer, Double price) {
+        if(seller.car != this){
+            System.out.println("Sprzedawca nie ma tego samochodu");
+        }else if (buyer.cash < price){
+            System.out.println("Kupujacy nie ma wystarczajaco duzo hajsu");
+        }else{
+            buyer.cash -= price;
+            buyer.car = this;
+
+            seller.cash += price;
+            seller.car = null;
+
+            System.out.println("Transakcja przebiegla pomyslnie");
+
+
+        }
     }
 
     public Car(String model, String producer, String yearOfProduction, String color, Double engineCapacity, String engineSound, Double value) {

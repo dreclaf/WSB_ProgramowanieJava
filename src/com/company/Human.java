@@ -1,32 +1,63 @@
 package com.company;
 
 import com.company.devices.Car;
+import com.company.devices.Device;
+import com.company.devices.Phone;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Human extends Animal{ // każdy człowiek jest zwierzęciem
+public class Human extends Animal implements Saleable{ // każdy człowiek jest zwierzęciem
     public final static String HUMAN_SPECIES = "homo sapiens";
+
+    public Double cash;
+
+    public Human slave;
 
     public String firstName;
     public String lastName;
     public Animal pet = null;
-    private Car car = null;
+    public Device device = null;
+    public Phone phone = null;
+    public Car car = null;
     private Double salary = 0.0;
-    protected String phone;
+//    protected String phone;
     List<Object> salaryList = new ArrayList<Object>();
 
+    public void setCash(Double cash) {
+        this.cash = cash;
+    }
 
-    public String toString(){//overriding the toString() method
-        return "imie: "+firstName+" "+", nazwisko: "+lastName+" "+ ", wyplata: " + salary + ", nr. telefonu: "+phone;
+    public Double getCash() {
+        return cash;
+    }
+
+    @Override
+    public String toString() {
+        return "Human{" +
+                "cash=" + cash +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", pet=" + pet +
+                ", device=" + device +
+                ", phone=" + phone +
+                ", car=" + car +
+                ", salary=" + salary +
+                ", slave=" + slave +
+                '}';
     }
 
     public Human(String firstName, String lastName, String phone) {
         super(HUMAN_SPECIES); // odwołuje się do klasy wyżej
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phone = phone;
+        this.cash = 0.0;
+//        this.phone = phone;
+    }
+
+    public void sale(Human seller, Human buyer, Double price) {
+        System.out.println("Policja zostala zawiadomiona.");
     }
 
     public void getSalary(){

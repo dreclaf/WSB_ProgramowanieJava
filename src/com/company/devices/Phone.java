@@ -1,5 +1,6 @@
 package com.company.devices;
 
+import com.company.Human;
 import com.company.Saleable;
 
 public class Phone extends Device implements Saleable {
@@ -24,14 +25,28 @@ public class Phone extends Device implements Saleable {
         System.out.println("Nacisnieto przycisk, telefon wlaczony.");
     }
 
-    @Override
-    public void sale() {
-        System.out.println("Sprzedano!");
-        return;
+    public void sale(Human seller, Human buyer, Double price) {
+        if(seller.phone != this){
+            System.out.println("Sprzedawca nie ma tego telefonu");
+        }else if (buyer.cash < price){
+            System.out.println("Kupujacy nie ma wystarczajaco duzo hajsu");
+        }else{
+            buyer.cash -= price;
+            buyer.phone = this;
+
+            seller.cash += price;
+            seller.phone = null;
+
+            System.out.println("Transakcja przebiegla pomyslnie");
+
+
+        }
     }
 
-    @Override
-    public Double getPrice() {
-        return null;
-    }
+//    @Override
+//    public Double getPrice() {
+//        return null;
+//    }
+
+
 }
