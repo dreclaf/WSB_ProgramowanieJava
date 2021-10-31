@@ -48,11 +48,12 @@ public class Animal {
         }
     }
 
-    public void sale(Human seller, Human buyer, Double price) {
+    public void sale(Human seller, Human buyer, Double price) throws Exception {
         if(seller.pet != this){
-            System.out.println("Sprzedawca nie ma tego zwierzecia");
+            throw new Exception("Sprzedawca nie ma tego zwierzecia");
         }else if (buyer.cash < price){
-            System.out.println("Kupujacy nie ma wystarczajaco duzo hajsu");
+            throw new Exception("Kupujacy nie ma wystarczajaco duzo hajsu");
+//            System.out.println();
         }else if (this instanceof Human){ // Sprawdza czy to jest klasą Human !!!!
             System.out.println("Policja zostala zawiadomiona");
         }
