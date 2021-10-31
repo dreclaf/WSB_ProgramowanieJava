@@ -13,7 +13,6 @@ public class Human extends Animal implements Saleable{ // każdy człowiek jest 
 
     public Double cash;
 
-    public Human slave;
 
     public String firstName;
     public String lastName;
@@ -44,7 +43,6 @@ public class Human extends Animal implements Saleable{ // każdy człowiek jest 
                 ", phone=" + phone +
                 ", car=" + car +
                 ", salary=" + salary +
-                ", slave=" + slave +
                 '}';
     }
 

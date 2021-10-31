@@ -53,7 +53,10 @@ public class Animal {
             System.out.println("Sprzedawca nie ma tego zwierzecia");
         }else if (buyer.cash < price){
             System.out.println("Kupujacy nie ma wystarczajaco duzo hajsu");
-        }else{
+        }else if (this instanceof Human){ // Sprawdza czy to jest klasą Human !!!!
+            System.out.println("Policja zostala zawiadomiona");
+        }
+        else{
             buyer.cash -= price;
             buyer.pet = this;
 

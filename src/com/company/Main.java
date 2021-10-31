@@ -12,19 +12,17 @@ public class Main {
 //
 //        me.phone = telefon;
 //
-//        he.cash = 1500.0;
+        he.cash = 15000.0;
 //
 //        System.out.println(me);
 //        System.out.println(he);
 //
 //        me.phone.sale(me, he, 1000.);
 
-        me.slave = slave;
+        me.pet = slave;
 
-        System.out.println(me);
-        System.out.println(he);
 
-        me.slave.sale(me, he, 10000.0);
+        me.pet.sale(me, he, 10000.0);
 
 
 
