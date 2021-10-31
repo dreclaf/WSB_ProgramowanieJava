@@ -2,6 +2,9 @@ package com.company.devices;
 
 import com.company.Human;
 import com.company.Saleable;
+import com.company.URL;
+
+import java.util.List;
 
 public class Phone extends Device implements Saleable {
     final Double screenSize;
@@ -41,6 +44,22 @@ public class Phone extends Device implements Saleable {
 
 
         }
+    }
+
+    public void InstallAnApp(String appName){
+
+    }
+    public void InstallAnApp(String appName, String appVer){
+
+    }
+    public void InstallAnApp(String appName, String appVer, String appUrl){
+
+    }
+    public void InstallAnApp(List<String> appNames){
+
+    }
+    public void InstallAnApp(URL url){
+
     }
 
 //    @Override
