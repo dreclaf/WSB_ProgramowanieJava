@@ -3,11 +3,13 @@ package com.company.devices;
 import com.company.Human;
 import com.company.Saleable;
 import com.company.URL;
-
 import java.util.List;
 
 public class Phone extends Device implements Saleable {
     final Double screenSize;
+    static final public String defaultServerAddress = "mega.nz";
+    static final public String defaultProtocol = "https";
+    static final public String defaultVersionName = "1.0 Production Release";
     String os;
 
     public String toString() {
@@ -47,20 +49,24 @@ public class Phone extends Device implements Saleable {
     }
 
     public void InstallAnApp(String appName){
-
+        System.out.println("Aplikacja " + appName + " zostala zainstalowana");
     }
     public void InstallAnApp(String appName, String appVer){
-
+        System.out.println("Aplikacja " + appName + " o wersji " + appVer + " zostala zainstalowana");
     }
     public void InstallAnApp(String appName, String appVer, String appUrl){
-
-    }
-    public void InstallAnApp(List<String> appNames){
-
+        System.out.println("Aplikacja " + appName + " o wersji " + appVer + " z linku " + appUrl + " zostala zainstalowana");
     }
     public void InstallAnApp(URL url){
-
+        System.out.println("Aplikacja " + url.appName + " zostala zainstalowana"); // improwizowałem :)
     }
+    public void InstallAnApp(List<String> appNames){
+        for (String appName : appNames) {
+            System.out.println("Aplikacja " + appName + " zostala zainstalowana");
+        }
+        System.out.println("Zainstalowano " + appNames.size() + " aplikacji");
+    }
+    
 
 //    @Override
 //    public Double getPrice() {

@@ -2,7 +2,7 @@ package com.company.devices;
 
 import com.company.Human;
 
-public class Car extends Device {
+public abstract class Car extends Device {
     private Double value;
     String color;
     Double engineCapacity;
@@ -64,4 +64,6 @@ public class Car extends Device {
     public void turnOn() {
         System.out.println("Przekrecono kluczyk, odpalono samochod");
     }
+
+    public abstract void refuel();
 }
