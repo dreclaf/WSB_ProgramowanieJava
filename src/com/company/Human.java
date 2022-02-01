@@ -119,6 +119,7 @@ public class Human extends Animal implements Saleable{ // każdy człowiek jest 
             System.out.println("Miejsce parkingowe o numerze " + carPosition + " jest już zajęte !");
         }else{
             garage[carPosition] = car;
+            car.ownersList.add(this);
             System.out.println("Gratulację, dodałeś samochód do garażu na miejsce parkingowe o numerze: " + carPosition);
         }
         

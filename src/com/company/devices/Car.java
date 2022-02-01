@@ -1,6 +1,8 @@
 package com.company.devices;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import com.company.Human;
 
@@ -9,7 +11,9 @@ public abstract class Car extends Device {
     String color;
     Double engineCapacity;
     String engineSound;
+    public List<Human> ownersList;
 
+    
     public String toString() {
         return "Car{" +
                 "value=" + value +
@@ -29,13 +33,15 @@ public abstract class Car extends Device {
                 emptyGaragePlace = i;
             }
         }
-
-        if (emptyGaragePlace == -1)
-            System.out.println("kupujący nie ma miejsca w garażu !");
+        
+        if (this.ownersList.get(ownersList.size() - 1) != seller)
+            System.out.println("Sprzedający nie jest ostatnim właścicielem pojazdu !");
+        else if (emptyGaragePlace == -1)
+            System.out.println("Kupujący nie ma miejsca w garażu !");
         else if (!Arrays.asList(seller.garage).contains(this))
-            System.out.println("sprzedawca nie ma tego auta w garażu !");
+            System.out.println("Sprzedawca nie ma tego auta w garażu !");
         else if (buyer.getCash() < price)
-            System.out.println("kupujący nie ma tyle gotówki !");
+            System.out.println("Kupujący nie ma tyle gotówki !");
         else {
 
             buyer.garage[emptyGaragePlace] = this;
@@ -43,9 +49,10 @@ public abstract class Car extends Device {
 
             buyer.setCash(buyer.getCash() - price);
             seller.setCash(seller.getCash() + price);
+
+            this.ownersList.add(buyer);
         
             System.out.println("Samochód sprzedany!\n" + "Sprzedawca: " + seller.firstName + " sprzedał " + this.producer + " " + this.model + " kupującemu " + buyer.firstName + " za " + price);
-
         }
     }
 
@@ -55,6 +62,24 @@ public abstract class Car extends Device {
         this.engineCapacity = engineCapacity;
         this.engineSound = engineSound;
         this.value = value;
+        this.ownersList = new ArrayList<Human>();
+    }
+
+    public boolean checkIfWasOwner(Human human) {
+        if (this.ownersList.contains(human))
+            return true;
+        else
+            return false;
+    }
+    public boolean checkTransactions(Human seller, Human buyer) {
+        if (!this.ownersList.contains(seller) || !this.ownersList.contains(buyer))
+            return false;
+        else 
+            return true;
+    }
+
+    public int getOwnersCount() {
+        return this.ownersList.size(); // w przypadku wliczenia w transakcję również metody setCar(Car car) z klasy Human
     }
 
     public boolean equals(Object obj) {
