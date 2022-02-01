@@ -1,8 +1,11 @@
 package com.company.devices;
 
+import com.company.Application;
 import com.company.Human;
 import com.company.Saleable;
 import com.company.URL;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Phone extends Device implements Saleable {
@@ -11,6 +14,8 @@ public class Phone extends Device implements Saleable {
     static final public String defaultProtocol = "https";
     static final public String defaultVersionName = "1.0 Production Release";
     String os;
+    public List<Application> appList;
+    public Human owner;
 
     public String toString() {
         return "Phone{" +
@@ -24,6 +29,13 @@ public class Phone extends Device implements Saleable {
         super(model, producer, yearOfProduction);
         this.screenSize = screenSize;
         this.os = os;
+    }
+    public Phone(int yearOfProduction, String model, String producer, Double screenSize, String os, Human owner) {
+        super(model, producer, yearOfProduction);
+        this.screenSize = screenSize;
+        this.os = os;
+        this.appList = new ArrayList<Application>();
+        this.owner = owner;
     }
 
     public void turnOn() {
@@ -47,6 +59,47 @@ public class Phone extends Device implements Saleable {
 
         }
     }
+
+    public void installApp(Application app) {
+        if (this.owner == null){
+            System.out.println("Ten telefon nie posaida właściciela, który mógłby zapłacić za apke");
+        }
+        if (this.owner.getCash() < app.price)
+            System.out.println("Właściciel telefonu nie ma wystarczająco dużo kasy");
+        else {
+            appList.add(app);
+            this.owner.setCash(this.owner.getCash() - app.price);
+            System.out.println("Pomyślnie zainstalowano " + app);
+        }
+    }
+
+    public boolean isAppInstalled(Application app) {
+        if (this.appList.contains(app))
+            return true;
+        else
+            return false;
+    }
+    public boolean isAppInstalled(String appName) {
+        for (Application app : appList) {
+            if (app.name == appName)
+                return true;
+        }
+        return false;
+    }
+    public void freeApps() {
+        for (Application app : appList) {
+            if (app.price == 0.0)
+                System.out.println(app);
+        }
+    }
+    public double appsValue() {
+        double val = 0;
+        for (Application app : appList) {
+            val += app.price;
+        }
+        return val;
+    }
+
 
     public void InstallAnApp(String appName){
         System.out.println("Aplikacja " + appName + " zostala zainstalowana");

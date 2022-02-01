@@ -10,35 +10,43 @@ import com.company.devices.*;
 public class Main {
 
     public static void main(String[] args) {
-        Car cLPG1 = new LPG("A3", "Audi", 2004, "Czerwony", 2.0, "Ziuuuuuu", 8000.0);
+        Human h1 = new Human("Dawid", "Reclaf", "123 123 123");
+        Phone p1 = new Phone(2020, "S12", "Samsung", 8.5, "Android", h1);
 
-        Human h1 = new Human("Dawid", "Reclaf", "123 123 123", 3);
-        Human h2 = new Human("Dominik", "Gruba", "321 321 321", 2);
-        Human h3 = new Human("Grzegorz", "Mielewczyk", "123 123 123", 3);
-        Human h4 = new Human("Andrzej", "Plichta", "321 321 321", 2);
-        Human h5 = new Human("Zbigniew", "Stonoga", "321 321 321", 2);
+        Application app1 = new Application("Google", "12341.2", 0.0);
+        Application app2 = new Application("Snapchat", "42342.1b", 0.0);
+        Application app3 = new Application("Facebook", "1235.0", 0.0);
+        Application app4 = new Application("Minecraft", "41.13", 40.0);
+        Application app5 = new Application("Geometry Dash", "14.0", 300000.0);
+        Application app6 = new Application("Piraci", "43221.2", 60.0);
+        h1.phone=p1;
 
-        h2.setCash(500000.0);
-        h3.setCash(500000.0);
-        h4.setCash(250000.0);
+        h1.setCash(500.0);
+        
+        System.out.println("//Kasa przed instalacją apek: " + h1.getCash());
+        p1.installApp(app1);
+        p1.installApp(app2);
+        p1.installApp(app3);
+        System.out.println("//Kasa po instalacji apek: " + h1.getCash());
 
-        h1.setCar(cLPG1, 0);
+        System.out.println("//Wypisz wszystkie darmowe apki");
+        p1.freeApps();
 
-        System.out.println("\n//Auto: " + cLPG1 + " mialo " + cLPG1.getOwnersCount() + " wlascicieli");
+        System.out.println("//Sprawdź czy apka jest zainstalowana");
+        System.out.println(p1.isAppInstalled(app1));
+        System.out.println(p1.isAppInstalled("Facebook"));
+        
 
-        cLPG1.sell(h1, h2, 20000.0);
-        cLPG1.sell(h2, h3, 20000.0);
-        cLPG1.sell(h3, h4, 20000.0);
+        System.out.println("//Kasa przed instalacją apek: " + h1.getCash());
+        p1.installApp(app4);
+        p1.installApp(app6);
+        p1.installApp(app5);
+        System.out.println("//Kasa po instalacji apek: " + h1.getCash());
 
-        System.out.println("\n//Auto: " + cLPG1 + " mialo " + cLPG1.getOwnersCount() + " wlascicieli");
+        System.out.println("//Sprawdź czy apka jest zainstalowana");
+        System.out.println(p1.isAppInstalled(app5));
+        System.out.println(p1.isAppInstalled("Piraci"));
 
-        System.out.println("\n//Sprawdzanie czy czlowiek był właścicielem");
-        System.out.println(cLPG1.checkIfWasOwner(h1));
-
-        System.out.println("\n//Sprawdzanie czy czlowiek nie był właścicielem");
-        System.out.println(cLPG1.checkIfWasOwner(h5));
-
-        System.out.println("\n//Sprawdzanie czy człowiek sprzedał samochód drugiemu człowiekowi");
-        System.out.println(cLPG1.checkTransactions(h1, h2));
+        System.out.println("//Wartość apek wynosi "+p1.appsValue());
     }
 }
