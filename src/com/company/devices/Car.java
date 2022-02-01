@@ -1,9 +1,11 @@
 package com.company.devices;
 
+import java.util.Arrays;
+
 import com.company.Human;
 
 public abstract class Car extends Device {
-    private Double value;
+    public Double value;
     String color;
     Double engineCapacity;
     String engineSound;
@@ -19,25 +21,35 @@ public abstract class Car extends Device {
     }
 
     @Override
-    public void sale(Human seller, Human buyer, Double price) {
-        if(seller.car != this){
-            System.out.println("Sprzedawca nie ma tego samochodu");
-        }else if (buyer.cash < price){
-            System.out.println("Kupujacy nie ma wystarczajaco duzo hajsu");
-        }else{
-            buyer.cash -= price;
-            buyer.car = this;
+    public void sell(Human seller, Human buyer, Double price) {
 
-            seller.cash += price;
-            seller.car = null;
+        int emptyGaragePlace = -1;
+        for (int i = 0; i < buyer.garage.length; i++) {
+            if (buyer.garage[i] == null){
+                emptyGaragePlace = i;
+            }
+        }
 
-            System.out.println("Transakcja przebiegla pomyslnie");
+        if (emptyGaragePlace == -1)
+            System.out.println("kupujący nie ma miejsca w garażu !");
+        else if (!Arrays.asList(seller.garage).contains(this))
+            System.out.println("sprzedawca nie ma tego auta w garażu !");
+        else if (buyer.getCash() < price)
+            System.out.println("kupujący nie ma tyle gotówki !");
+        else {
 
+            buyer.garage[emptyGaragePlace] = this;
+            seller.garage[Arrays.asList(seller.garage).indexOf(this)] = null;
+
+            buyer.setCash(buyer.getCash() - price);
+            seller.setCash(seller.getCash() + price);
+        
+            System.out.println("Samochód sprzedany!\n" + "Sprzedawca: " + seller.firstName + " sprzedał " + this.producer + " " + this.model + " kupującemu " + buyer.firstName + " za " + price);
 
         }
     }
 
-    public Car(String model, String producer, String yearOfProduction, String color, Double engineCapacity, String engineSound, Double value) {
+    public Car(String model, String producer, int yearOfProduction, String color, Double engineCapacity, String engineSound, Double value) {
         super(model, producer, yearOfProduction);
         this.color = color;
         this.engineCapacity = engineCapacity;

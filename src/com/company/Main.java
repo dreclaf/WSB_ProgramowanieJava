@@ -1,37 +1,54 @@
 package com.company;
 
 import com.company.creatures.Animal;
+
+import java.util.Arrays;
+
 import com.company.creatures.*;
 import com.company.devices.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        
-       
-        Phone phone = new Phone("2001", "Galaxy", "Samsung", 5.6, "Android");
+        Car cLPG1 = new LPG("A3", "Audi", 2004, "Czerwony", 2.0, "Ziuuuuuu", 8000.0);
+        Car cDiesel1 = new Diesel("Ibiza II", "Seat", 2001, "Czarny", 1.9, "KleKleKleKle", 2000.0);
+        Car cLPG2 = new LPG("A6", "audi", 2017, "Niebieski", 2.4, "Wuuuwuuuuuu", 15000.0);
+        Car cElectric1 = new Electric("model S", "Tesla", 2017, "Czarny", 5.0, "...", 212000.0);
+        Car cWithoutOwner = new Electric("model G", "Tesla", 2025, "Diamentowy", 10.0, "...", 100000.0);
 
-        System.out.println("Test funkcji: InstallAnApp(String appName): ");
-        phone.InstallAnApp("Facebook");
+        Human h1 = new Human("Dawid", "Reclaf", "123 123 123", 3);
+        Human h2 = new Human("Dominik", "Gruba", "321 321 321", 2);
 
-        System.out.println("\nTest funkcji: InstallAnApp(String appName, String appVer):");
-        phone.InstallAnApp("Angry Birds", "1.142352.2");
+        h1.setCash(500000.0);
+        h2.setCash(250000.0);
 
-        System.out.println("\nTest funkcji: InstallAnApp(String appName, String appVer, String appUrl):");
-        phone.InstallAnApp("Chrome", "12.0", "https://play.google.com/store/apps/details?id=com.android.chrome&hl=pl&gl=US");
+        h1.setCar(cLPG1, 0);
+        h1.setCar(cLPG2, 1);
+        h1.setCar(cDiesel1, 2);
+        h2.setCar(cElectric1, 1);
 
-        URL url = new URL("https://tinder.com/tinderapp.app", "Tinder", "2.3");
-        System.out.println("\nTest funkcji: InstallAnApp(URL url):");
-        phone.InstallAnApp(url);
+        System.out.println("\n//Sprzedaz auta, którego nikt nie posiada");
+        cWithoutOwner.sell(h1, h2, 20000.0);
 
+        System.out.println("\n//Sprzedaż auta, gdy kupujący nie ma miejsca w garażu");
+        cElectric1.sell(h2, h1, 10000.0);
 
-        Car carLPG = new LPG("A6", "Audi", "2003", "Czarny", 2.4, "WUuuuuuuuu", 20000.00);
-        Car carDiesel = new Diesel("A4", "Audi", "2010", "Czerwony", 2.0, "KleKleKLeKleKLe", 40000.00);
-        Car carElectric = new Electric("Model S", "Tesla", "2021", "Biały", 0.0, ".", 800000.00);
+        System.out.println("\n//Sprzedaż auta, na którego nie stać kupującego");
+        cLPG2.sell(h1, h2, 10000000000.0);
 
-        carLPG.refuel();
-        carDiesel.refuel();
-        carElectric.refuel();
+        System.out.println("\nWartość garażu dla sprzedającego (h1): " + h1.calculateGarageValue());
+        System.out.println("\nWartość garażu dla kupującego (h2): " + h2.calculateGarageValue() + "\n");
 
+        cLPG1.sell(h1, h2, 5000.0);
+
+        System.out.println("\nWartość garażu dla sprzedającego (h1): " + h1.calculateGarageValue());
+        System.out.println("\nWartość garażu dla kupującego (h2): " + h2.calculateGarageValue() + "\n");
+
+        System.out.println("\nNieposortowany garaż: \n");
+        System.out.println(Arrays.asList(h1.garage));
+
+        System.out.println("\nPosortowany garaż: \n");
+        h1.sortGarage();
+        System.out.println(Arrays.asList(h1.garage));
     }
 }

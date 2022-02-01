@@ -6,9 +6,10 @@ import com.company.Saleable;
 public abstract class Device implements Saleable { // klasa abstrakcyjna, nie wolno tworzyćjej obiektów, a jedynie od niej dziedziczyć
     String model;
     String producer;
-    final public String yearOfProduction;
+    final public int yearOfProduction;
+    public Double value;
 
-    public Device(String model, String producer, String yearOfProduction){
+    public Device(String model, String producer, int yearOfProduction){
         this.yearOfProduction = yearOfProduction;
         this.model = model;
         this.producer = producer;

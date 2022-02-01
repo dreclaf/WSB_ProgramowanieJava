@@ -20,7 +20,7 @@ public class Phone extends Device implements Saleable {
                 '}';
     }
 
-    public Phone(String yearOfProduction, String model, String producer, Double screenSize, String os) {
+    public Phone(int yearOfProduction, String model, String producer, Double screenSize, String os) {
         super(model, producer, yearOfProduction);
         this.screenSize = screenSize;
         this.os = os;
@@ -30,7 +30,7 @@ public class Phone extends Device implements Saleable {
         System.out.println("Nacisnieto przycisk, telefon wlaczony.");
     }
 
-    public void sale(Human seller, Human buyer, Double price) {
+    public void sell(Human seller, Human buyer, Double price) {
         if(seller.phone != this){
             System.out.println("Sprzedawca nie ma tego telefonu");
         }else if (buyer.cash < price){

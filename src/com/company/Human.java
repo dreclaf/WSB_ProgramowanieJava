@@ -6,21 +6,21 @@ import com.company.devices.Device;
 import com.company.devices.Phone;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 public class Human extends Animal implements Saleable{ // każdy człowiek jest zwierzęciem
     public final static String HUMAN_SPECIES = "homo sapiens";
-
+    private final static int NUMBER_OF_CARS = 2;
     public Double cash;
 
-
+    public Car[] garage;
     public String firstName;
     public String lastName;
     public Animal pet = null;
     public Device device = null;
     public Phone phone = null;
-    public Car car = null;
     private Double salary = 0.0;
 //    protected String phone;
     List<Object> salaryList = new ArrayList<Object>();
@@ -42,7 +42,6 @@ public class Human extends Animal implements Saleable{ // każdy człowiek jest 
                 ", pet=" + pet +
                 ", device=" + device +
                 ", phone=" + phone +
-                ", car=" + car +
                 ", salary=" + salary +
                 '}';
     }
@@ -52,10 +51,17 @@ public class Human extends Animal implements Saleable{ // każdy człowiek jest 
         this.firstName = firstName;
         this.lastName = lastName;
         this.cash = 0.0;
-//        this.phone = phone;
+        this.garage = new Car[NUMBER_OF_CARS];
+    }
+    public Human(String firstName, String lastName, String phone, int garageSize) {
+        super(HUMAN_SPECIES); // odwołuje się do klasy wyżej
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.cash = 0.0;
+        this.garage = new Car[garageSize];
     }
 
-    public void sale(Human seller, Human buyer, Double price) {
+    public void sell(Human seller, Human buyer, Double price) {
         System.out.println("Policja zostala zawiadomiona.");
     }
 
@@ -84,25 +90,51 @@ public class Human extends Animal implements Saleable{ // każdy człowiek jest 
         }
     }
 
-    public void buyCar(Car car){
-        if(this.salary > car.getValue()){
-            System.out.println("Udalo sie kupic auto za gotowke.");
-            this.car = car;
-            return;
-        }else if (this.salary > car.getValue()*0.08){
-            System.out.println("Udalo sie kupic samochod na kredyt.");
-            this.car = car;
-            return;
-        }else{
-            System.out.println("zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
-            return;
-        }
-    }
+    // public void buyCar(Car car){
+    //     if(this.salary > car.getValue()){
+    //         System.out.println("Udalo sie kupic auto za gotowke.");
+    //         this.car = car;
+    //         return;
+    //     }else if (this.salary > car.getValue()*0.08){
+    //         System.out.println("Udalo sie kupic samochod na kredyt.");
+    //         this.car = car;
+    //         return;
+    //     }else{
+    //         System.out.println("zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+    //         return;
+    //     }
+    // }
 
     void getName(){
         System.out.println("Nazywam sie: "+firstName+" "+lastName);
     }
-    void getCar(){
-        car.getInfo();
+    public Car getCar(int carPosition) {
+        return garage[carPosition];
+    }
+    public void setCar(Car car, int carPosition) {
+        if (car == null) {
+            // this.garage[carPosition] = null;
+            System.out.println("Nie oszukuj, dodaj samochód !");
+        } else if (garage[carPosition] != null) {
+            System.out.println("Miejsce parkingowe o numerze " + carPosition + " jest już zajęte !");
+        }else{
+            garage[carPosition] = car;
+            System.out.println("Gratulację, dodałeś samochód do garażu na miejsce parkingowe o numerze: " + carPosition);
+        }
+        
+    }
+
+    public double calculateGarageValue() {
+        double val = 0;
+        for (Car car : garage) {
+            if (car != null){
+                val += car.value;
+            }
+        }
+        return val;
+    }
+
+    public void sortGarage() {
+        Arrays.sort(garage, new CarComparator());
     }
 }
